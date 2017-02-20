@@ -1,5 +1,5 @@
 <template name="NewRecipe">
         <div class="new-recipe-container">
-            {{> quickForm collection="Recipes" id="insertRecipeForm" type="insert" class="new-recipe-form"}}
+            {{> quickForm collection="Recipes" id="insertRecipeForm" type="method" class="new-recipe-form" meteormethod="Recipes.Insert"}}
         </div>
 </template>

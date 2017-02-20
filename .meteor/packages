@@ -25,12 +25,13 @@ stolinski:stylus-multi
 fortawesome:fontawesome
 spiderable
 fastclick
+dburles:collection-helpers
 raix:handlebar-helpers
 aldeed:collection2
 aldeed:autoform
 accounts-ui
 accounts-password
 matb33:bootstrap-glyphicons
-msavin:jetsetter
 zimme:active-route
-gwendall:auth-client-callbacks
+gwendall:auth-client-callbacks 
+meteortoys:allthings

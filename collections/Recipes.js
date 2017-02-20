@@ -1,3 +1,5 @@
+import { check } from 'meteor/check';
+
 Recipes = new Meteor.Collection('recipes');
 
 RecipeSchema = new SimpleSchema({
@@ -15,9 +17,6 @@ RecipeSchema = new SimpleSchema({
         label: "Author",
         autoValue: function() {
             return this.userId
-        },
-        autoform: {
-            type: "hidden"
         }
     },
     createdAt: {
@@ -25,11 +24,22 @@ RecipeSchema = new SimpleSchema({
         label: "Created At",
         autoValue: function() {
             return new Date()
-        },
-        autoform: {
-            type: "hidden"
         }
+        
     }
 });
 
 Recipes.attachSchema( RecipeSchema );
+
+Meteor.methods({
+    'Recipes.Insert'(doc){
+        RecipeSchema.clean(doc);        
+        check(doc, Recipes.simpleSchema());
+
+        if(! this.userId){
+            throw new Meteor.Error('not-authorized');
+        }
+
+        Recipes.insert( doc, function(err, docId) {console.log("DocId: ", docId);});
+    },
+});
