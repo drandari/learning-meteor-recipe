@@ -1,5 +1,3 @@
-import { check } from 'meteor/check';
-
 Recipes = new Meteor.Collection('recipes');
 
 RecipeSchema = new SimpleSchema({
@@ -38,9 +36,7 @@ Recipes.attachSchema( RecipeSchema );
 
 Meteor.methods({
     'Recipes.Insert'(doc){
-        RecipeSchema.clean(doc);        
-        check(doc, Recipes.simpleSchema());
-
+        
         if(! this.userId){
             throw new Meteor.Error('not-authorized');
         }
